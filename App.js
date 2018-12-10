@@ -7,29 +7,42 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, AdsManagerStatus, Animated} from 'react-native';
+import {Platform, StyleSheet, Text, View, AdsManagerStatus, Animated, Easing} from 'react-native';
 
 class FadeInView extends React.Component {
+  constructor () {
+  	super()
+    this.animatedValue = new Animated.Value(0)
+  }
+
   state = {
     fadeAnim: new Animated.Value(0), //Inital value for opacity 0
   }
 
+  
+
   componentDidMount() {
+    this.animatedValue.setValue(0)
     Animated.timing(  //Animated over time
-      this.state.fadeAnim, { // the animated view to drive
+      this.animatedValue, { // the animated view to drive
         toValue: 1, // animated to opacicty 1 opaque
-        duration: 5000, //make it take a whilw
+        easing: Easing.back(),
+        duration: 1500, //make it take a whilw
       }
     ).start(); //start animation
   }
 
   render() {
     let {fadeAnim} = this.state;
+    const marginLeft = this.animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 260]
+    })
 
     return (
       <Animated.View
-        style={{...this.props.style,
-        opacity: fadeAnim,}}
+        style={[styles.block,
+         {marginLeft} ]}
         >
         {this.props.children}
         </Animated.View>
@@ -75,5 +88,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  block: {
+  	width: 160,
+    height: 50,
+    backgroundColor: 'red'
   },
 });
