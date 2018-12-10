@@ -20,16 +20,10 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View accessible={true} style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Text>Hacker and Looper, Page Post Engagement</Text>
-        <Text>29,967 Post Engagements</Text>
-        {/* <AdsManagerStatus
-          accessibilityLabel={'Status ' + this.props.status}
-          status={this.props.status}
-        /> */}
+      <View  style={styles.style2}>
+        <View style={{backgroundColor:'blue', flex: 0.3}} />
+        <View style={{backgroundColor:'red', flex: 0.5}} />
+        <Text> 2 colores boxes and a text view in a raw with padding</Text>
       </View>
     );
   }
@@ -52,4 +46,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  style2: {
+    flexDirection: 'row',
+    height: 100,
+    padding: 20,
+  }
 });
