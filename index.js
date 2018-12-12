@@ -1,15 +1,27 @@
-/** @format */
-
 import { Navigation } from "react-native-navigation";
-import App from './App';
 
-Navigation.registerComponent(`App`, () => App);
+import {registerScreens} from './screensNav';
+
+registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
-      component: {
-        name: "App"
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'nav.welcome',
+              options: {
+                topBar: {
+                  title: {
+                    text: 'iLearning'
+                  }
+                }
+              }
+            }
+          }
+        ],
       }
     }
   });
