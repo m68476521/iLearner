@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, AdsManagerStatus} from 'react-native';
+import {Platform, StyleSheet, Text, View, AdsManagerStatus, TouchableOpacity} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,17 +20,14 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View accessible={true} style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Text>Hacker and Looper, Page Post Engagement</Text>
-        <Text>29,967 Post Engagements</Text>
-        {/* <AdsManagerStatus
-          accessibilityLabel={'Status ' + this.props.status}
-          status={this.props.status}
-        /> */}
+      <TouchableOpacity 
+      accessible={true} 
+      accessibilityLabel="Tap me!"
+      onPress={this._onPress}>
+      <View style={styles.welcome}>
+          <Text style={styles.buttonText}>Press me!</Text>
       </View>
+      </TouchableOpacity>
     );
   }
 }
