@@ -23,6 +23,7 @@ export default class App extends Component<Props> {
       <TouchableOpacity 
       accessible={true} 
       accessibilityLabel="Tap me!"
+      accessibilityHint="Tap me hint!"
       onPress={this._onPress}>
       <View style={styles.welcome}>
           <Text style={styles.buttonText}>Press me!</Text>
